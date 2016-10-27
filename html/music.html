@@ -8,7 +8,7 @@
 	window.onload=function(){	
 		
 		var canvas = document.querySelector("canvas");
-		var a=null;
+		var a=setInterval("drawcanvas()",1000);
 		canvas.onclick=function(){//给canvas添加点击事件
 			var timer;
     		if (a) {
@@ -96,8 +96,8 @@
     opacity: 0.2;
     left: 0;
     right: 0;
-    width: auto;
-        height: auto;
+    width: 100%;
+        height: 10%;
     
 }
 #player:hover {

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>music</title>
+    <meta charset="utf-8">
+</head>
+<script type="text/javascript">
+	window.onload=function(){	
+		
+		var canvas = document.querySelector("canvas");
+		var a=null;
+		canvas.onclick=function(){//给canvas添加点击事件
+			var timer;
+    		if (a) {
+    			clearInterval(a);
+				 a=null;
+    		} else{ 
+    			 a=setInterval("drawcanvas()",1000);
+    		}
+        }
+	}
+
+	function drawcanvas(){		
+        var canvas = document.querySelector("canvas");
+        var context = canvas.getContext('2d');
+        var r, cx, cy, radgrad;
+        var drawCircles = function() {
+      // fade existing content
+      context.fillStyle = 'rgba(255,255,255,0.9)';
+      context.fillRect(0,0,canvas.width,canvas.height);
+
+      // draw new spheres
+      for (var i=0; i<360; i+=15) {
+        // define random position and size
+        cx = Math.random()*canvas.width;
+        cy = Math.random()*canvas.height;
+        r = Math.random()*canvas.width/10.0;
+
+        // define radial gradient
+        radgrad = context.createRadialGradient(
+          0+(r*0.15),0-(r*0.25),
+          r/3.0,0,0,r
+        );
+        radgrad.addColorStop(0.0, 'hsl('+i+',100%,75%)');
+        radgrad.addColorStop(0.9, 'hsl('+i+',100%,50%)');
+        radgrad.addColorStop(1.0, 'rgba(0,0,0,0)');
+
+        // draw circle
+        context.save();
+        context.translate(cx,cy);
+        context.beginPath();
+        context.moveTo(0+r,0);
+        context.arc(0,0,r,0,Math.PI*2.0,0);
+        context.fillStyle = radgrad;
+        context.fill();
+        context.restore();
+      } 
+        };
+        drawCircles();
+	}
+
+    function showlrc(){
+        var audio=document.querySelector("audio");
+        var lrc=document.querySelector("p");
+        lrc.innerHTML='悲怆奏鸣曲-贝多芬';
+            
+        
+    }
+</script>
+<style type="text/css">
+	html,body{  
+                height:100%;  
+                width:100%;  
+            } 
+	#canvas{
+		 display:block; 
+		 height: 100%;
+		 width: 100%;
+         z-index: -1;
+	}
+    /*#lyricWrapper{
+         float:left;
+    }*/
+    #lyricContainer{
+        width: 100%;
+        text-align: center;
+        z-index: 99;
+        position: fixed;
+        top: 15px;
+        font-size: medium;
+
+    }
+    #player {
+    position: fixed;
+    bottom: 5px;
+    opacity: 0.2;
+    left: 0;
+    right: 0;
+    
+}
+#player:hover {
+    opacity: 1;
+}
+</style>
+<body>	
+	<canvas id="canvas" ></canvas>
+    <div id="lyricContainer"><p></p></div>
+    <div id="player"> 
+
+        <audio id="audio" src="Grande.mp3" preload="auto" controls="controls" loop="loop" onplay="showlrc()" />
+        <
+    </div>
+</body>
+</html>
+
+

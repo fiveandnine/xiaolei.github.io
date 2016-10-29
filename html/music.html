@@ -88,11 +88,6 @@
             //this regex mathes the time [00.12.78]
             pattern = /\[\d{2}:\d{2}.\d{2}\]/g,
             result = [];
-
-        // Get offset from lyrics
-        // var offset = this.getOffset(text);
-
-        //exclude the description parts or empty parts of the lyric
         while (!pattern.test(lines[0])) {
             lines = lines.slice(1);
         };
@@ -122,6 +117,7 @@
 
 
 </script>
+</script>
 <style type="text/css">
 	html,body{  
                 height:100%;  
@@ -130,8 +126,8 @@
             } 
 	#canvas{
 		 display:block; 
-		 height: 100%;
-		 width: auto;
+		 height: auto;
+		 width: 100%;
          z-index: -1;
 	}
     /*#lyricWrapper{
@@ -142,7 +138,7 @@
         text-align: center;
         z-index: 98;
         position: fixed;
-        top: 15px;
+        top: 35px;
         font-size: medium;
 
     }
@@ -160,13 +156,22 @@
     /*#player:hover {
         opacity: 1;
     }*/
-   @media screen and (min-device-width: 375px) and (max-device-width: 667px){
-			audio {
-    			width: 600px;
-    			height: 120px;
-			}
-			
-		}
+    @media screen and (min-device-width: 375px) and (max-device-width: 667px){
+        html,body{  
+            height:100%;  
+            width:auto;  
+            text-align: center;
+        }
+        audio {
+            width: 600px;
+            height: 120px;
+        }
+        #canvas{
+            display:block; 
+            height: 100%;
+            width: auto;
+            z-index: -1;
+        }
     }
     #lyricContainer{
         
@@ -178,7 +183,7 @@
         top: 25%;
 
         word-wrap: break-word;
-        font: bold 20px arial,sans-serif;
+        font: bold 30px arial,sans-serif;
     }
 </style>
 <body>	

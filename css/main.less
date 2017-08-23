@@ -1,3 +1,51 @@
-body{
-	padding: 0.0rem 0.0rem;
+body {
+    padding: 0.0rem;
+    margin: 0rem;
+}
+
+ul li {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+@background-color: #ce1c1c;
+@text-color: #1A237E;
+@inputxlenth: 100px;
+@themecolor: #cccccc;
+/*全局样式*/
+
+.isi {
+    height: 8.5rem;
+    border: 0.062rem solid #000000;
+    margin: 0.312rem 0;
+}
+
+.isp {
+    .isi;
+    background-color: #cccccc
+}
+/*导航样式*/
+
+.header-ul {
+    border-bottom: 0.062rem solid @themecolor;
+    background-color: @themecolor;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    li {
+        color: #ffffff;
+        padding: 0;
+        vertical-align: middle;
+        a {
+            vertical-align: middle;
+            display: inline-block;
+        }
+    }
 }
